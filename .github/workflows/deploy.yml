@@ -2,7 +2,7 @@ name: 🚀 Deploy Project
 on:
   push:
     branches:
-      - main # تأكد أن هذا هو اسم الغصن الرئيسي عندك
+      - main
 
 jobs:
   web-deploy:
@@ -20,7 +20,7 @@ jobs:
     - name: 📦 Install pnpm
       uses: pnpm/action-setup@v2
       with:
-        version: 10 # نفس الإصدار في ملفك
+        version: 10 
 
     - name: 🛠️ Install and Build
       run: |
@@ -35,4 +35,5 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./dist/ 
         server-dir: ./
-        dangerous-clean-slate: false # 👈 تم إضافة هذا السطر لمنع الخطأ 550 وتجاوز مشكلة حذف المجلدات المفقودة
+        dangerous-clean-slate: false
+        timeout: 600000 # زيادة وقت الانتظار لـ 10 دقائق لتجنب الـ Timeout
