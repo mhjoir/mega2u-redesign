@@ -35,3 +35,4 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./dist/ 
         server-dir: ./
+        dangerous-clean-slate: false # 👈 تم إضافة هذا السطر لمنع الخطأ 550 وتجاوز مشكلة حذف المجلدات المفقودة
