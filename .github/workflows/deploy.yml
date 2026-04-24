@@ -1,0 +1,37 @@
+name: 🚀 Deploy Project
+on:
+  push:
+    branches:
+      - main # تأكد أن هذا هو اسم الغصن الرئيسي عندك
+
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v3
+
+    - name: 🛠️ Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+
+    - name: 📦 Install pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: 10 # نفس الإصدار في ملفك
+
+    - name: 🛠️ Install and Build
+      run: |
+        pnpm install
+        pnpm build
+
+    - name: 📂 Sync Files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./dist/ 
+        server-dir: ./
