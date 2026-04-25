@@ -9,6 +9,9 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import ProductPage from "./pages/ProductPage";
 import Checkout from "./pages/Checkout";
+import Cart from "./pages/Cart";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import CustomerPortal from "./pages/CustomerPortal"; // لوحة تحكم العميل
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Refund from "./pages/Refund";
@@ -23,8 +26,13 @@ function Router() {
       {/* 2. صفحة تفاصيل المنتج (نتفلكس، شاهد، إلخ) */}
       <Route path="/product/:id" component={ProductPage} />
 
-      {/* 3. صفحة الدفع (Checkout) */}
+      {/* 3. صفحة الدفع (Checkout) + السلة */}
       <Route path="/checkout/:id" component={Checkout} />
+      <Route path="/cart" component={Cart} />
+
+      {/* صفحات الحساب */}
+      <Route path="/login" component={Login} />
+      <Route path="/register" component={Register} />
 
       {/* 4. لوحة تحكم العميل (Customer Portal) - لعرض الطلبات والبيانات */}
       <Route path="/customer-portal" component={CustomerPortal} />

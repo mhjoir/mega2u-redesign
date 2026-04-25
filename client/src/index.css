@@ -210,20 +210,31 @@
   }
 }
 
-/* Google Fonts Import */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap');
+/* ==================================================================
+ * Kinguin-style Design System (RTL-first)
+ * Brand colors:
+ *   Primary Orange:  #ff6b35
+ *   Deep Navy:       #011627  (text + dark surfaces)
+ *   Royal Navy:      #0f3460  (secondary actions)
+ *   Soft BG:         #f5f6fa  (page background)
+ *   Hairline Border: #e7eaf3
+ * ================================================================== */
 
-/* Typography System */
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Typography System (Cairo for Arabic body, Poppins for accents) */
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Cairo', 'Inter', sans-serif;
   font-weight: 400;
+  background-color: #f5f6fa;
+  color: #011627;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-family: 'Cairo', 'Poppins', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.01em;
 }
 
 h1 {
@@ -270,3 +281,81 @@ p {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* ==================================================================
+ * Kinguin-style helpers
+ * ================================================================== */
+
+/* قاعدة موحدة لحاوية الصفحة بأسلوب Kinguin */
+.kg-container {
+  width: 100%;
+  max-width: 1320px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 640px) {
+  .kg-container { padding-left: 1.25rem; padding-right: 1.25rem; }
+}
+@media (min-width: 1024px) {
+  .kg-container { padding-left: 2rem; padding-right: 2rem; }
+}
+
+/* بطاقة بأسلوب Kinguin */
+.kg-card {
+  background: #ffffff;
+  border: 1px solid #e7eaf3;
+  border-radius: 1rem;
+  transition: box-shadow .2s ease, border-color .2s ease, transform .2s ease;
+}
+.kg-card:hover { border-color: #ff6b35; box-shadow: 0 12px 30px -12px rgba(255, 107, 53, .25); }
+
+/* أزرار Kinguin */
+.kg-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  font-weight: 800; border-radius: .75rem; padding: .75rem 1.25rem;
+  transition: transform .12s ease, background-color .15s ease, color .15s ease, box-shadow .15s ease;
+  white-space: nowrap;
+}
+.kg-btn:active { transform: scale(.97); }
+.kg-btn-primary { background: #ff6b35; color: #fff; box-shadow: 0 8px 20px -8px rgba(255, 107, 53, .55); }
+.kg-btn-primary:hover { background: #e85a2a; }
+.kg-btn-dark { background: #011627; color: #fff; }
+.kg-btn-dark:hover { background: #0f3460; }
+.kg-btn-outline { background: #fff; color: #011627; border: 2px solid #011627; }
+.kg-btn-outline:hover { background: #011627; color: #fff; }
+.kg-btn-ghost { background: transparent; color: #011627; }
+.kg-btn-ghost:hover { background: #f5f6fa; }
+
+/* خطوط مشتركة لشارة الخصم */
+.kg-discount-badge {
+  background: #ff6b35; color: #fff; font-weight: 800; font-size: .8rem;
+  padding: .25rem .5rem; border-radius: .5rem; display: inline-block;
+}
+
+/* إدخال نموذج بأسلوب Kinguin */
+.kg-input {
+  width: 100%; padding: .85rem 1rem; border-radius: .75rem;
+  border: 1px solid #e7eaf3; background: #f5f6fa; color: #011627;
+  transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+  font-family: inherit; font-size: .95rem;
+}
+.kg-input:focus { outline: none; border-color: #ff6b35; background: #fff; box-shadow: 0 0 0 4px rgba(255, 107, 53, .12); }
+.kg-input::placeholder { color: #98a2b3; }
+
+/* رابط ضمن النصوص */
+.kg-link { color: #0f3460; font-weight: 700; }
+.kg-link:hover { color: #ff6b35; }
+
+/* نقطة فاصلة دقيقة */
+.kg-divider { height: 1px; background: #e7eaf3; }
+
+/* تأثير ظل خفيف للبطاقات الجانبية */
+.kg-soft-shadow { box-shadow: 0 1px 2px rgba(16, 24, 40, .04), 0 1px 3px rgba(16, 24, 40, .06); }
+
+/* تأثير وهج للزر الرئيسي */
+.kg-glow { box-shadow: 0 10px 30px -10px rgba(255, 107, 53, .55); }
+
+/* تخصيص اتجاه RTL لقوائم الـ DropdownMenu/Select الافتراضية */
+[dir="rtl"] .kg-flip-x { transform: scaleX(-1); }

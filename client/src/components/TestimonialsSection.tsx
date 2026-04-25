@@ -1,51 +1,79 @@
-import { testimonials } from '@/lib/products';
-import { Star } from 'lucide-react';
+import { testimonials } from "@/lib/products";
+import { Star, Quote, MessageSquare } from "lucide-react";
 
+/**
+ * Kinguin-style Testimonials (RTL)
+ * شبكة بطاقات بيضاء أنيقة على خلفية رمادية فاتحة.
+ * تم الحفاظ على البيانات من @/lib/products بدون تعديل.
+ */
 export default function TestimonialsSection() {
   return (
-    <section className="py-16 md:py-24 bg-[#f8f8f8]">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-4">
+    <section
+      id="testimonials"
+      className="py-14 md:py-20 bg-[#f5f6fa] font-['Cairo']"
+      dir="rtl"
+    >
+      <div className="kg-container">
+        {/* رأس القسم */}
+        <div className="text-center mb-10 md:mb-14">
+          <div className="inline-flex items-center gap-2 bg-[#0088cc]/10 text-[#0088cc] rounded-full px-3 py-1 text-xs font-black mb-3">
+            <MessageSquare className="w-3.5 h-3.5" />
             آراء عملائنا
+          </div>
+          <h2 className="text-3xl md:text-4xl font-black text-[#011627] mb-3">
+            ماذا يقول عملاؤنا
           </h2>
-          <p className="text-lg text-[#666666] max-w-2xl mx-auto">
-            اسمع من عملائنا الراضين عن خدماتنا
-          </p>
-          <div className="section-divider"></div>
+
+          {/* ملخّص التقييم العام */}
+          <div className="inline-flex items-center gap-2 bg-white border border-[#e7eaf3] rounded-xl px-4 py-2 mt-3">
+            <div className="flex items-center gap-1">
+              {[1, 2, 3, 4, 5].map((i) => (
+                <Star
+                  key={i}
+                  className="w-4 h-4 fill-yellow-400 text-yellow-400"
+                />
+              ))}
+            </div>
+            <span className="text-sm font-black text-[#011627]">4.9/5</span>
+            <span className="text-xs text-gray-500">— بناءً على آراء العملاء</span>
+          </div>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-items">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className="stagger-item bg-white rounded-lg border-2 border-[#e0e0e0] p-8 hover:border-[#ff6b35] hover:shadow-lg transition-all duration-300 hover-lift"
-            >
-              {/* Stars */}
-              <div className="flex gap-1 mb-4">
-                {Array.from({ length: testimonial.rating }).map((_, i) => (
+        {/* شبكة الآراء */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+          {testimonials.map((t: any, index: number) => (
+            <div key={index} className="kg-card p-6 relative group">
+              <Quote className="absolute top-5 left-5 w-7 h-7 text-[#ff6b35]/15 -scale-x-100" />
+
+              {/* النجوم */}
+              <div className="flex items-center gap-0.5 mb-4">
+                {Array.from({ length: t.rating || 5 }).map((_, i) => (
                   <Star
                     key={i}
-                    className="w-5 h-5 fill-[#ff6b35] text-[#ff6b35]"
+                    className="w-4 h-4 fill-[#ff6b35] text-[#ff6b35]"
                   />
                 ))}
               </div>
 
-              {/* Text */}
-              <p className="text-[#666666] mb-6 text-lg">
-                "{testimonial.text}"
+              {/* النص */}
+              <p className="text-sm text-gray-700 leading-relaxed mb-5 min-h-[60px]">
+                {t.text}
               </p>
 
-              {/* Author */}
-              <div className="border-t-2 border-[#e0e0e0] pt-4">
-                <p className="font-bold text-[#1a1a1a]">
-                  {testimonial.name}
-                </p>
-                <p className="text-sm text-[#0f3460]">
-                  {testimonial.role}
-                </p>
+              {/* الفاصل */}
+              <div className="kg-divider mb-4" />
+
+              {/* المؤلّف */}
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#ff6b35] to-[#ff8c5a] flex items-center justify-center text-white font-black text-base shrink-0">
+                  {(t.name || "?").charAt(0)}
+                </div>
+                <div className="min-w-0">
+                  <div className="text-sm font-black text-[#011627] truncate">
+                    {t.name}
+                  </div>
+                  <div className="text-xs text-gray-500 truncate">{t.role}</div>
+                </div>
               </div>
             </div>
           ))}
