@@ -165,61 +165,6 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-
-          {/* العمود 3 — العملاء */}
-          <div className="lg:col-span-3">
-            <h4 className="font-black text-base mb-4 text-white">
-              منطقة العملاء
-            </h4>
-            <ul className="space-y-2.5">
-              <li>
-                <Link
-                  href="/login"
-                  className="text-gray-400 text-sm hover:text-[#ff6b35] transition-colors flex items-center gap-1.5 group"
-                >
-                  <ChevronLeft className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  تسجيل الدخول
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/register"
-                  className="text-gray-400 text-sm hover:text-[#ff6b35] transition-colors flex items-center gap-1.5 group"
-                >
-                  <ChevronLeft className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  إنشاء حساب جديد
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/customer-portal"
-                  className="text-gray-400 text-sm hover:text-[#ff6b35] transition-colors flex items-center gap-1.5 group"
-                >
-                  <ChevronLeft className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  لوحة التحكم
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/orders"
-                  className="text-gray-400 text-sm hover:text-[#ff6b35] transition-colors flex items-center gap-1.5 group"
-                >
-                  <ChevronLeft className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  طلباتي
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/cart"
-                  className="text-gray-400 text-sm hover:text-[#ff6b35] transition-colors flex items-center gap-1.5 group"
-                >
-                  <ChevronLeft className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  سلة التسوق
-                </Link>
-              </li>
-            </ul>
-          </div>
-
           {/* العمود 4 — تواصل معنا */}
           <div className="lg:col-span-3">
             <h4 className="font-black text-base mb-4 text-white">
